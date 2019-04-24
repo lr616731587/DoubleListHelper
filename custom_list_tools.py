@@ -130,15 +130,32 @@ class ListHelper():
         return max_value
 
     @staticmethod
-    def order_by(target, func_condition):
+    def order_by(target, func_condition, revers=True):
         """
-        根据指定条件进行升序排列
+        根据指定条件进行排列
         :param target:
         :param func_condition:
         :return:
         """
         for i in range(len(target) - 1):
             for j in range(i + 1, len(target)):
-                if func_condition(target[i]) > func_condition(target[j]):
-                    target[i], target[j] = target[j], target[i]
-        # return target
+                if revers:
+                    if func_condition(target[i]) > func_condition(target[j]):
+                        target[i], target[j] = target[j], target[i]
+                else:
+                    if func_condition(target[i]) < func_condition(target[j]):
+                        target[i], target[j] = target[j], target[i]
+
+    @staticmethod
+    def get_min(target, func_condition):
+        """
+        获取最小的元素
+        :param target:
+        :param func_condition:
+        :return:
+        """
+        min_value = target[0]
+        for i in range(1, len(target)):
+            if func_condition(target[i]) < func_condition(min_value):
+                min_value = target[i]
+        return min_value
