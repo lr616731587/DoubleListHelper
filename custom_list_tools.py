@@ -138,6 +138,7 @@ class ListHelper():
         :return:
         """
         for i in range(len(target) - 1):
-            if func_condition(target[i]) > func_condition(target[i + 1]):
-                target[i], target[i + 1] = target[i + 1], target[i]
+            for j in range(i + 1, len(target)):
+                if func_condition(target[i]) > func_condition(target[j]):
+                    target[i], target[j] = target[j], target[i]
         # return target
