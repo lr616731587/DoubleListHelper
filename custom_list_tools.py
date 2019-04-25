@@ -130,7 +130,7 @@ class ListHelper():
         return max_value
 
     @staticmethod
-    def order_by(target, func_condition, revers=True):
+    def order_by(target, func_condition, revers=False):
         """
         根据指定条件进行排列
         :param target:
@@ -140,10 +140,10 @@ class ListHelper():
         for i in range(len(target) - 1):
             for j in range(i + 1, len(target)):
                 if revers:
-                    if func_condition(target[i]) > func_condition(target[j]):
+                    if func_condition(target[i]) < func_condition(target[j]):
                         target[i], target[j] = target[j], target[i]
                 else:
-                    if func_condition(target[i]) < func_condition(target[j]):
+                    if func_condition(target[i]) > func_condition(target[j]):
                         target[i], target[j] = target[j], target[i]
 
     @staticmethod
