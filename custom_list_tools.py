@@ -139,12 +139,11 @@ class ListHelper():
         """
         for i in range(len(target) - 1):
             for j in range(i + 1, len(target)):
-                if revers:
-                    if func_condition(target[i]) < func_condition(target[j]):
-                        target[i], target[j] = target[j], target[i]
-                else:
-                    if func_condition(target[i]) > func_condition(target[j]):
-                        target[i], target[j] = target[j], target[i]
+                if func_condition(target[i], target[j]):
+                    target[j], target[i] = target[i], target[j]
+                    
+                if func_condition(target[i], target[j]):
+                    target[i], target[j] = target[j], target[i]
 
     @staticmethod
     def get_min(target, func_condition):
