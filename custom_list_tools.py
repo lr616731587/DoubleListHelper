@@ -159,3 +159,16 @@ class ListHelper():
             if func_condition(target[i]) < func_condition(min_value):
                 min_value = target[i]
         return min_value
+
+    @staticmethod
+    def order_by_descending(target, func_condition):
+        """
+        按条件降序排列
+        :param target: 
+        :param func_condition: 
+        :return: 
+        """
+        for i in range(len(target) - 1):
+            for j in range(i + 1, len(target)):
+                if func_condition(target[i]) < func_condition(target[j]):
+                    target[i], target[j] = target[j], target[i]
